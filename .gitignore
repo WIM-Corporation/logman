@@ -1,0 +1,10 @@
+**/*.egg-info
+.venv
+.vscode
+dist/
+build/
+**/*.onnx
+.env
+**/*.pyc
+**/__pycache__
+**/.mypy_cache

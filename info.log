@@ -1,0 +1,14 @@
+{"context": "my_logger", "level": "INFO", "timestamp": "2024-07-23 14:59:25.391", "message": "This is an info message", "thread": "MainThread-8248052736"}
+{"context": "my_logger", "level": "ERROR", "timestamp": "2024-07-23 14:59:25.391", "message": "This is an error message", "thread": "MainThread-8248052736"}
+{"context": "my_logger", "level": "INFO", "timestamp": "2024-07-23 14:59:44.049", "message": "This is an info message", "thread": "MainThread-8248052736"}
+{"context": "my_logger", "level": "ERROR", "timestamp": "2024-07-23 14:59:44.049", "message": "This is an error message", "thread": "MainThread-8248052736"}
+{"context": "my_logger", "level": "WARNING", "timestamp": "2024-07-23 14:59:44.049", "message": "This is a warning message", "thread": "MainThread-8248052736"}
+{"context": "my_logger", "level": "INFO", "timestamp": "2024-07-23 15:00:01.936", "message": "This is an info message", "thread": "MainThread-8248052736"}
+{"context": "my_logger", "level": "ERROR", "timestamp": "2024-07-23 15:00:01.936", "message": "This is an error message", "thread": "MainThread-8248052736"}
+{"context": "my_logger", "level": "WARNING", "timestamp": "2024-07-23 15:00:01.936", "message": "This is a warning message", "thread": "MainThread-8248052736"}
+{"context": "my_logger", "level": "INFO", "timestamp": "2024-07-23 15:39:23.763", "message": "This is an info message", "thread": "MainThread-8248052736"}
+{"context": "my_logger", "level": "ERROR", "timestamp": "2024-07-23 15:39:23.763", "message": "This is an error message", "thread": "MainThread-8248052736"}
+{"context": "my_logger", "level": "WARNING", "timestamp": "2024-07-23 15:39:23.763", "message": "This is a warning message", "thread": "MainThread-8248052736"}
+{"context": "my_logger", "level": "INFO", "timestamp": "2024-07-23 15:39:29.027", "message": "This is an info message", "thread": "MainThread-8248052736"}
+{"context": "my_logger", "level": "ERROR", "timestamp": "2024-07-23 15:39:29.027", "message": "This is an error message", "thread": "MainThread-8248052736"}
+{"context": "my_logger", "level": "WARNING", "timestamp": "2024-07-23 15:39:29.027", "message": "This is a warning message", "thread": "MainThread-8248052736"}
