@@ -1,6 +1,7 @@
 **/*.egg-info
 .venv
 .vscode
+.tox
 dist/
 build/
 **/*.onnx

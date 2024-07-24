@@ -2,9 +2,11 @@ import logging
 import time
 import json
 
+from typing import Optional, Any
+
 
 class JsonFormatter(logging.Formatter):
-    def formatTime(self, record, datefmt=None):
+    def formatTime(self, record: logging.LogRecord, datefmt: Optional[str] = None) -> str:
         if datefmt:
             return super().formatTime(record, datefmt)
         ct = self.converter(record.created)
@@ -12,10 +14,10 @@ class JsonFormatter(logging.Formatter):
         s = "%s.%03d" % (t, record.msecs)
         return s
 
-    def formatException(self, ei):
+    def formatException(self, ei: Any) -> str:
         return super().formatException(ei)
 
-    def format(self, record):
+    def format(self, record: Any) -> Any:
         if hasattr(record, "formatted_message"):
             return record.formatted_message
 

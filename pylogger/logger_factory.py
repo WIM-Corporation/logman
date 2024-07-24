@@ -19,7 +19,7 @@ class LoggerFactory:
     _initialized = False  # 로깅 설정 초기화 여부
 
     @classmethod
-    def _initialize_logging(cls):
+    def _initialize_logging(cls) -> None:
         if not cls._initialized:
             with cls._lock:
                 if not cls._initialized:  # 이중 체크 잠금
@@ -39,12 +39,19 @@ class LoggerFactory:
                     cls._initialized = True
 
     @classmethod
-    def _add_handler(cls, handler: Union[logging.Handler, List[logging.Handler]]):
+    def _add_handler(cls, handler: Union[logging.Handler, List[logging.Handler]]) -> None:
         root_logger = logging.getLogger()
         root_logger.setLevel(logging.NOTSET)  # root 로거의 기본 레벨 설정
 
         # 기존 핸들러 제거
+        # if root_logger.hasHandlers():
+        #     root_logger.handlers.clear()
+
+        # 기존 핸들러 제거
         if root_logger.hasHandlers():
+            for h in root_logger.handlers:
+                if isinstance(h, logging.FileHandler):
+                    h.close()
             root_logger.handlers.clear()
 
         if isinstance(handler, list):
@@ -54,7 +61,7 @@ class LoggerFactory:
             root_logger.addHandler(handler)
 
     @classmethod
-    def getLogger(cls, name) -> logging.Logger:
+    def getLogger(cls, name: str) -> logging.Logger:
         cls._initialize_logging()
         if name not in cls._loggers:
             with cls._lock:
