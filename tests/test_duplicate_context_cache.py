@@ -1,7 +1,7 @@
 import uuid
 import unittest
 import os
-from pylogger.logger_factory import LoggerFactory
+from logman import LoggerFactory
 
 
 class A:

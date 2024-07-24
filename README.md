@@ -1,4 +1,4 @@
-# pylog
+# logman
 
 ## Run Tests
 
@@ -21,7 +21,7 @@ tox
 ### Sphinx
 
 ```bash
-pip install Sphinx sphinx-autobuild sphinx-rtd-theme
+pip install Sphinx sphinx-autobuild sphinx-rtd-theme myst_parser
 cd docs
 make html
 ```

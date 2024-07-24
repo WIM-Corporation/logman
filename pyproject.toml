@@ -3,7 +3,7 @@ build-backend = "flit_core.buildapi"
 requires = ["flit_core>=3,<4"]
 
 [project]
-name = "pylogger"
+name = "logman"
 version = "0.0.1"
 description = "Python logging made (stupidly) simple"
 authors = [
@@ -24,7 +24,7 @@ classifiers = [
   "Programming Language :: Python :: 3.13"
 ]
 dependencies = []
-keywords = ["pylogger", "logging", "logger", "log"]
+keywords = ["logman", "logging", "logger", "log"]
 license = {text = "MIT"}
 
 [project.optional-dependencies]
@@ -55,15 +55,15 @@ dev = [
 ]
 
 [project.urls]
-Documentation = "https://pylogger-docs.wimcorp.dev/en/stable/index.html"
-Homepage = "https://github.com/WIM-Corporation/pylogger"
+Documentation = "https://logman-docs.wimcorp.dev/en/stable/index.html"
+Homepage = "https://github.com/WIM-Corporation/logman"
 
 [tool.black]
 line-length = 100
 target-version = ["py35"]
 
 [tool.flit.module]
-name = "pylogger"
+name = "logman"
 
 [tool.mypy]
 strict = true

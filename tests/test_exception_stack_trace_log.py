@@ -3,7 +3,7 @@ import unittest
 import os
 import json
 
-from pylogger.logger_factory import LoggerFactory
+from logman.logger_factory import LoggerFactory
 
 
 class A:

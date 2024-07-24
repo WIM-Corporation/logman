@@ -1,0 +1,23 @@
+/* Increase the width of the content */
+.wy-nav-content {
+  max-width: 90%; /* Adjust this value as needed */
+}
+
+/* Increase the width of the sidebar */
+.wy-side-scroll {
+  width: 300px; /* Adjust this value as needed */
+}
+
+/* Ensure the navigation tree is fully expanded */
+.wy-nav-side {
+  overflow: visible;
+}
+
+.wy-menu-vertical .current .toctree-l {
+  display: block;
+}
+
+/* Optional: Customize the font size and other styles */
+body {
+  font-size: 16px; /* Adjust this value as needed */
+}
