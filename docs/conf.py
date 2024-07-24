@@ -12,9 +12,9 @@ sys.path.insert(0, os.path.abspath(".."))
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = "logman"
-copyright = "2024, hbjs"
-author = "hbjs"
+copyright = "2024, WIM Inc"
 release = "0.0.1"
+author = "hbjs97@naver.com"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -41,12 +41,4 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 html_theme = "sphinx_rtd_theme"
 html_static_path = ["_static"]
-
-# -- Custom settings ---------------------------------------------------------
-html_theme_options = {
-    "collapse_navigation": False,
-    "sticky_navigation": True,
-    "navigation_depth": 4,
-    "includehidden": True,
-    "titles_only": False,
-}
+# html_logo = "_static/logo.png"

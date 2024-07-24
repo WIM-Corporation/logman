@@ -110,13 +110,15 @@ Create a `promtail-config.yml` file to configure Promtail to send logs to Loki.
       - url: http://loki:3100/loki/api/v1/push
 
     scrape_configs:
-      - job_name: system
+      - job_name: logman
         static_configs:
           - targets:
               - localhost
             labels:
-              job: varlogs
+              job: pylogs
               __path__: /var/logs/*.log
+              environment: production
+
 
 Step 4: Build and Run
 ---------------------

@@ -1,408 +1,168 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../../">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LoggingHandler &mdash; logman 0.0.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LoggingHandler &mdash; logman 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
 
-    <!--[if lt IE 9]>
-      <script src="../../_static/js/html5shiv.min.js"></script>
-    <![endif]-->
-
-    <script src="../../_static/jquery.js?v=5d32c60e"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../../_static/documentation_options.js?v=d45e8c67"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=d45e8c67"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Recipes" href="../../recipes/index.html" />
-    <link rel="prev" title="LoggerFactory" href="logger_factory_module.html" />
-  </head>
+    <link rel="prev" title="LoggerFactory" href="logger_factory_module.html" /> 
+</head>
 
-  <body class="wy-body-for-nav">
-    <div class="wy-grid-for-nav">
-      <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-        <div class="wy-side-scroll">
-          <div class="wy-side-nav-search">
-            <a href="../../index.html" class="icon icon-home"> logman </a>
-            <div role="search">
-              <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-                <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
-              </form>
-            </div>
-          </div>
-          <div
-            class="wy-menu wy-menu-vertical"
-            data-spy="affix"
-            role="navigation"
-            aria-label="Navigation menu"
-          >
-            <p class="caption" role="heading"><span class="caption-text">Features</span></p>
-            <ul class="current">
-              <li class="toctree-l1 current">
-                <a class="reference internal" href="../index.html">Documentation</a>
-                <ul class="current">
-                  <li class="toctree-l2">
-                    <a class="reference internal" href="custom_logger_module.html">CustomLogger</a>
-                  </li>
-                  <li class="toctree-l2">
-                    <a class="reference internal" href="json_formatter_module.html"
-                      >JsonFormatter</a
-                    >
-                  </li>
-                  <li class="toctree-l2">
-                    <a class="reference internal" href="logger_factory_module.html"
-                      >LoggerFactory</a
-                    >
-                  </li>
-                  <li class="toctree-l2 current">
-                    <a class="current reference internal" href="#">LoggingHandler</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="toctree-l1">
-                <a class="reference internal" href="../../recipes/index.html">Recipes</a>
-                <ul>
-                  <li class="toctree-l2">
-                    <a class="reference internal" href="../../recipes/loki.html">Loki</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            <p class="caption" role="heading"><span class="caption-text">Support</span></p>
-            <ul>
-              <li class="toctree-l1">
-                <a class="reference external" href="https://github.com/WIM-Corporation/logman"
-                  >Github</a
-                >
-              </li>
-              <li class="toctree-l1">
-                <a class="reference external" href="https://en.wimcorp.co.kr/">Contact us</a>
-              </li>
-            </ul>
-          </div>
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            logman
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Features</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="custom_logger_module.html">CustomLogger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="json_formatter_module.html">JsonFormatter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logger_factory_module.html">LoggerFactory</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">LoggingHandler</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../recipes/index.html">Recipes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/WIM-Corporation/logman">Github</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://en.wimcorp.co.kr/">Contact us</a></li>
+</ul>
+
         </div>
-      </nav>
+      </div>
+    </nav>
 
-      <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-        <nav class="wy-nav-top" aria-label="Mobile navigation menu">
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">logman</a>
-        </nav>
+      </nav>
 
-        <div class="wy-nav-content">
-          <div class="rst-content">
-            <div role="navigation" aria-label="Page navigation">
-              <ul class="wy-breadcrumbs">
-                <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-                <li class="breadcrumb-item"><a href="../index.html">Documentation</a></li>
-                <li class="breadcrumb-item active">LoggingHandler</li>
-                <li class="wy-breadcrumbs-aside">
-                  <a
-                    href="../../_sources/documentation/modules/logging_handler_module.rst.txt"
-                    rel="nofollow"
-                  >
-                    View page source</a
-                  >
-                </li>
-              </ul>
-              <hr />
-            </div>
-            <div
-              role="main"
-              class="document"
-              itemscope="itemscope"
-              itemtype="http://schema.org/Article"
-            >
-              <div itemprop="articleBody">
-                <section id="module-logman.handler">
-                  <span id="logginghandler"></span>
-                  <h1>
-                    LoggingHandler<a
-                      class="headerlink"
-                      href="#module-logman.handler"
-                      title="Link to this heading"
-                      ></a
-                    >
-                  </h1>
-                  <dl class="py class">
-                    <dt class="sig sig-object py" id="logman.handler.ConsoleLoggingHandler">
-                      <em class="property"
-                        ><span class="pre">class</span><span class="w"> </span></em
-                      ><span class="sig-prename descclassname"
-                        ><span class="pre">logman.handler.</span></span
-                      ><span class="sig-name descname"
-                        ><span class="pre">ConsoleLoggingHandler</span></span
-                      ><span class="sig-paren">(</span
-                      ><em class="sig-param"
-                        ><span class="n"><span class="pre">formatter</span></span
-                        ><span class="p"><span class="pre">:</span></span
-                        ><span class="w"> </span
-                        ><span class="n"><span class="pre">Formatter</span></span></em
-                      >,
-                      <em class="sig-param"
-                        ><span class="n"><span class="pre">level</span></span
-                        ><span class="p"><span class="pre">:</span></span
-                        ><span class="w"> </span><span class="n"><span class="pre">int</span></span
-                        ><span class="w"> </span><span class="o"><span class="pre">=</span></span
-                        ><span class="w"> </span
-                        ><span class="default_value"><span class="pre">10</span></span></em
-                      ><span class="sig-paren">)</span
-                      ><a
-                        class="reference internal"
-                        href="../../_modules/logman/handler/console_logging_handler.html#ConsoleLoggingHandler"
-                        ><span class="viewcode-link"><span class="pre">[source]</span></span></a
-                      ><a
-                        class="headerlink"
-                        href="#logman.handler.ConsoleLoggingHandler"
-                        title="Link to this definition"
-                        ></a
-                      >
-                    </dt>
-                    <dd>
-                      <p>
-                        Bases:
-                        <code class="xref py py-class docutils literal notranslate"
-                          ><span class="pre">StreamHandler</span></code
-                        >
-                      </p>
-                      <p>A custom logging handler that outputs logs to the console.</p>
-                      <dl class="field-list simple">
-                        <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-                        <dd class="field-odd">
-                          <ul class="simple">
-                            <li>
-                              <p>
-                                <strong>formatter</strong> (<em>logging.Formatter</em>) – The
-                                formatter to use for formatting log messages.
-                              </p>
-                            </li>
-                            <li>
-                              <p>
-                                <strong>level</strong> (<em>int</em><em>, </em><em>optional</em>) –
-                                The logging level. Defaults to logging.DEBUG.
-                              </p>
-                            </li>
-                          </ul>
-                        </dd>
-                      </dl>
-                      <dl class="py method">
-                        <dt
-                          class="sig sig-object py"
-                          id="logman.handler.ConsoleLoggingHandler.__init__"
-                        >
-                          <span class="sig-name descname"><span class="pre">__init__</span></span
-                          ><span class="sig-paren">(</span
-                          ><em class="sig-param"
-                            ><span class="n"><span class="pre">formatter</span></span></em
-                          >,
-                          <em class="sig-param"
-                            ><span class="n"><span class="pre">level</span></span
-                            ><span class="o"><span class="pre">=</span></span
-                            ><span class="default_value"
-                              ><span class="pre">logging.DEBUG</span></span
-                            ></em
-                          ><span class="sig-paren">)</span
-                          ><a
-                            class="reference internal"
-                            href="../../_modules/logman/handler/console_logging_handler.html#ConsoleLoggingHandler.__init__"
-                            ><span class="viewcode-link"><span class="pre">[source]</span></span></a
-                          ><a
-                            class="headerlink"
-                            href="#logman.handler.ConsoleLoggingHandler.__init__"
-                            title="Link to this definition"
-                            ></a
-                          >
-                        </dt>
-                        <dd>
-                          <p>
-                            Initializes the handler with the specified formatter and logging level.
-                          </p>
-                        </dd>
-                      </dl>
-                    </dd>
-                  </dl>
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Documentation</a></li>
+      <li class="breadcrumb-item active">LoggingHandler</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/documentation/modules/logging_handler_module.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-logman.handler">
+<span id="logginghandler"></span><h1>LoggingHandler<a class="headerlink" href="#module-logman.handler" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="logman.handler.ConsoleLoggingHandler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logman.handler.</span></span><span class="sig-name descname"><span class="pre">ConsoleLoggingHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formatter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Formatter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/logman/handler/console_logging_handler.html#ConsoleLoggingHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#logman.handler.ConsoleLoggingHandler" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">StreamHandler</span></code></p>
+<p>A custom logging handler that outputs logs to the console.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>formatter</strong> (<em>logging.Formatter</em>) – The formatter to use for formatting log messages.</p></li>
+<li><p><strong>level</strong> (<em>int</em><em>, </em><em>optional</em>) – The logging level. Defaults to logging.DEBUG.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="logman.handler.ConsoleLoggingHandler.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formatter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">logging.DEBUG</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/logman/handler/console_logging_handler.html#ConsoleLoggingHandler.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#logman.handler.ConsoleLoggingHandler.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initializes the handler with the specified formatter and logging level.</p>
+</dd></dl>
 
-                  <dl class="py class">
-                    <dt class="sig sig-object py" id="logman.handler.FileRotateLoggingHandler">
-                      <em class="property"
-                        ><span class="pre">class</span><span class="w"> </span></em
-                      ><span class="sig-prename descclassname"
-                        ><span class="pre">logman.handler.</span></span
-                      ><span class="sig-name descname"
-                        ><span class="pre">FileRotateLoggingHandler</span></span
-                      ><span class="sig-paren">(</span
-                      ><em class="sig-param"
-                        ><span class="n"><span class="pre">formatter</span></span
-                        ><span class="p"><span class="pre">:</span></span
-                        ><span class="w"> </span
-                        ><span class="n"><span class="pre">Formatter</span></span></em
-                      >,
-                      <em class="sig-param"
-                        ><span class="n"><span class="pre">filePath</span></span
-                        ><span class="p"><span class="pre">:</span></span
-                        ><span class="w"> </span
-                        ><span class="n"
-                          ><span class="pre">str</span><span class="w"> </span
-                          ><span class="p"><span class="pre">|</span></span
-                          ><span class="w"> </span><span class="pre">PathLike</span
-                          ><span class="p"><span class="pre">[</span></span
-                          ><span class="pre">str</span
-                          ><span class="p"><span class="pre">]</span></span></span
-                        ></em
-                      >,
-                      <em class="sig-param"
-                        ><span class="n"><span class="pre">maxBytes</span></span
-                        ><span class="p"><span class="pre">:</span></span
-                        ><span class="w"> </span
-                        ><span class="n"><span class="pre">int</span></span></em
-                      >,
-                      <em class="sig-param"
-                        ><span class="n"><span class="pre">level</span></span
-                        ><span class="p"><span class="pre">:</span></span
-                        ><span class="w"> </span><span class="n"><span class="pre">int</span></span
-                        ><span class="w"> </span><span class="o"><span class="pre">=</span></span
-                        ><span class="w"> </span
-                        ><span class="default_value"><span class="pre">10</span></span></em
-                      ><span class="sig-paren">)</span
-                      ><a
-                        class="reference internal"
-                        href="../../_modules/logman/handler/file_rotate_logging_handler.html#FileRotateLoggingHandler"
-                        ><span class="viewcode-link"><span class="pre">[source]</span></span></a
-                      ><a
-                        class="headerlink"
-                        href="#logman.handler.FileRotateLoggingHandler"
-                        title="Link to this definition"
-                        ></a
-                      >
-                    </dt>
-                    <dd>
-                      <p>
-                        Bases:
-                        <code class="xref py py-class docutils literal notranslate"
-                          ><span class="pre">RotatingFileHandler</span></code
-                        >
-                      </p>
-                      <p>A custom logging handler that writes logs to a file with rotation.</p>
-                      <dl class="field-list simple">
-                        <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-                        <dd class="field-odd">
-                          <ul class="simple">
-                            <li>
-                              <p>
-                                <strong>formatter</strong> (<em>logging.Formatter</em>) – The
-                                formatter to use for formatting log messages.
-                              </p>
-                            </li>
-                            <li>
-                              <p>
-                                <strong>filePath</strong> (<em>Union</em><em>[</em><em>str</em
-                                ><em>, </em><em>os.PathLike</em><em>[</em><em>str</em><em>]</em
-                                ><em>]</em>) – The path to the log file.
-                              </p>
-                            </li>
-                            <li>
-                              <p>
-                                <strong>maxBytes</strong> (<em>int</em>) – The maximum size of the
-                                log file before rotation occurs.
-                              </p>
-                            </li>
-                            <li>
-                              <p>
-                                <strong>level</strong> (<em>int</em><em>, </em><em>optional</em>) –
-                                The logging level. Defaults to logging.DEBUG.
-                              </p>
-                            </li>
-                          </ul>
-                        </dd>
-                      </dl>
-                      <dl class="py method">
-                        <dt
-                          class="sig sig-object py"
-                          id="logman.handler.FileRotateLoggingHandler.__init__"
-                        >
-                          <span class="sig-name descname"><span class="pre">__init__</span></span
-                          ><span class="sig-paren">(</span
-                          ><em class="sig-param"
-                            ><span class="n"><span class="pre">formatter</span></span></em
-                          >,
-                          <em class="sig-param"
-                            ><span class="n"><span class="pre">filePath</span></span></em
-                          >,
-                          <em class="sig-param"
-                            ><span class="n"><span class="pre">maxBytes</span></span></em
-                          >,
-                          <em class="sig-param"
-                            ><span class="n"><span class="pre">level</span></span
-                            ><span class="o"><span class="pre">=</span></span
-                            ><span class="default_value"
-                              ><span class="pre">logging.DEBUG</span></span
-                            ></em
-                          ><span class="sig-paren">)</span
-                          ><a
-                            class="reference internal"
-                            href="../../_modules/logman/handler/file_rotate_logging_handler.html#FileRotateLoggingHandler.__init__"
-                            ><span class="viewcode-link"><span class="pre">[source]</span></span></a
-                          ><a
-                            class="headerlink"
-                            href="#logman.handler.FileRotateLoggingHandler.__init__"
-                            title="Link to this definition"
-                            ></a
-                          >
-                        </dt>
-                        <dd><p>Initializes the handler with the specified parameters.</p></dd>
-                      </dl>
-                    </dd>
-                  </dl>
-                </section>
-              </div>
-            </div>
-            <footer>
-              <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-                <a
-                  href="logger_factory_module.html"
-                  class="btn btn-neutral float-left"
-                  title="LoggerFactory"
-                  accesskey="p"
-                  rel="prev"
-                  ><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a
-                >
-                <a
-                  href="../../recipes/index.html"
-                  class="btn btn-neutral float-right"
-                  title="Recipes"
-                  accesskey="n"
-                  rel="next"
-                  >Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span
-                ></a>
-              </div>
+</dd></dl>
 
-              <hr />
+<dl class="py class">
+<dt class="sig sig-object py" id="logman.handler.FileRotateLoggingHandler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logman.handler.</span></span><span class="sig-name descname"><span class="pre">FileRotateLoggingHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formatter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Formatter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filePath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PathLike</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxBytes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/logman/handler/file_rotate_logging_handler.html#FileRotateLoggingHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#logman.handler.FileRotateLoggingHandler" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">RotatingFileHandler</span></code></p>
+<p>A custom logging handler that writes logs to a file with rotation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>formatter</strong> (<em>logging.Formatter</em>) – The formatter to use for formatting log messages.</p></li>
+<li><p><strong>filePath</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>os.PathLike</em><em>[</em><em>str</em><em>]</em><em>]</em>) – The path to the log file.</p></li>
+<li><p><strong>maxBytes</strong> (<em>int</em>) – The maximum size of the log file before rotation occurs.</p></li>
+<li><p><strong>level</strong> (<em>int</em><em>, </em><em>optional</em>) – The logging level. Defaults to logging.DEBUG.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="logman.handler.FileRotateLoggingHandler.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formatter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filePath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxBytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">logging.DEBUG</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/logman/handler/file_rotate_logging_handler.html#FileRotateLoggingHandler.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#logman.handler.FileRotateLoggingHandler.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initializes the handler with the specified parameters.</p>
+</dd></dl>
 
-              <div role="contentinfo">
-                <p>&#169; Copyright 2024, hbjs.</p>
-              </div>
+</dd></dl>
 
-              Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-              <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-              provided by <a href="https://readthedocs.org">Read the Docs</a>.
-            </footer>
+</section>
+
+
+           </div>
           </div>
-        </div>
-      </section>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="logger_factory_module.html" class="btn btn-neutral float-left" title="LoggerFactory" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../recipes/index.html" class="btn btn-neutral float-right" title="Recipes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-    <script>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, WIM Inc.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
       jQuery(function () {
-        SphinxRtdTheme.Navigation.enable(true)
-      })
-    </script>
-  </body>
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>
