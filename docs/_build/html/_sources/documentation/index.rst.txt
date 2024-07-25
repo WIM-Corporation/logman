@@ -35,4 +35,5 @@ Modules
     :titlesonly:
     :glob:
 
-    modules/*
+    api/index
+    features/index

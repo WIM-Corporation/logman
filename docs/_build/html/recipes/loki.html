@@ -43,8 +43,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Features</span></p>
-<ul class="current">
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../documentation/index.html">Documentation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Recipes</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Loki</a></li>
@@ -143,17 +142,54 @@
 <section id="step-2-docker-compose-setup">
 <h3>Step 2: Docker Compose Setup<a class="headerlink" href="#step-2-docker-compose-setup" title="Link to this heading"></a></h3>
 <p>Create a <cite>docker-compose.yml</cite> file to define the services. This setup will include the Python application and Promtail.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.8&quot;</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.8&#39;</span>
+
 <span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="w">      </span><span class="nt">dockerfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.dockerfile</span>
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">logs:/app/logs</span>
 <span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PYTHONUNBUFFERED=1</span>
 
+<span class="w">  </span><span class="nt">loki</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana/loki:2.9.2</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;3100:3100&#39;</span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-config.file=/etc/loki/local-config.yaml</span>
+
+<span class="w">  </span><span class="nt">grafana</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GF_PATHS_PROVISIONING=/etc/grafana/provisioning</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GF_AUTH_ANONYMOUS_ENABLED=true</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GF_AUTH_ANONYMOUS_ORG_ROLE=Admin</span>
+<span class="w">    </span><span class="nt">entrypoint</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sh</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-euc</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">mkdir -p /etc/grafana/provisioning/datasources</span>
+<span class="w">        </span><span class="no">cat &lt;&lt;EOF &gt; /etc/grafana/provisioning/datasources/ds.yaml</span>
+<span class="w">        </span><span class="no">apiVersion: 1</span>
+<span class="w">        </span><span class="no">datasources:</span>
+<span class="w">        </span><span class="no">- name: Loki</span>
+<span class="w">          </span><span class="no">type: loki</span>
+<span class="w">          </span><span class="no">access: proxy</span>
+<span class="w">          </span><span class="no">orgId: 1</span>
+<span class="w">          </span><span class="no">url: http://loki:3100</span>
+<span class="w">          </span><span class="no">basicAuth: false</span>
+<span class="w">          </span><span class="no">isDefault: true</span>
+<span class="w">          </span><span class="no">version: 1</span>
+<span class="w">          </span><span class="no">editable: false</span>
+<span class="w">        </span><span class="no">EOF</span>
+<span class="w">        </span><span class="no">/run.sh</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana/grafana:latest</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;3000:3000&#39;</span>
+
 <span class="w">  </span><span class="nt">promtail</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana/promtail</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana/promtail:2.9.2</span>
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">logs:/var/logs</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./promtail-config.yml:/etc/promtail/promtail-config.yml</span>
@@ -162,6 +198,11 @@
 <span class="nt">volumes</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">logs</span><span class="p">:</span>
 </pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The provided docker-compose.yml file is an example configuration for development and testing purposes.
+For production, it is recommended to set up Grafana and Loki separately to better manage and scale your logging infrastructure.</p>
 </div>
 </section>
 <section id="step-3-promtail-configuration">
@@ -188,6 +229,24 @@
 <span class="w">          </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">production</span>
 </pre></div>
 </div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Ensure that you customize the clients URL to match your Loki server’s address, especially if it’s hosted remotely or under a different port.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">clients</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">url</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">YOUR_LOKI_SERVER</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">YOUR_LOKI_PORT</span><span class="o">&gt;/</span><span class="n">loki</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">push</span>
+
+<span class="n">scrape_configs</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">job_name</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">YOUR_JOB_NAME</span><span class="o">&gt;</span>
+    <span class="n">static_configs</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">targets</span><span class="p">:</span>
+          <span class="o">-</span> <span class="o">&lt;</span><span class="n">YOUR_TARGET</span><span class="o">&gt;</span>
+        <span class="n">labels</span><span class="p">:</span>
+          <span class="n">job</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">YOUR_JOB_LABEL</span><span class="o">&gt;</span>
+          <span class="n">__path__</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">YOUR_LOG_PATH</span><span class="o">&gt;</span>
+          <span class="o">...</span>
+</pre></div>
+</div>
+</div>
 </section>
 <section id="step-4-build-and-run">
 <h3>Step 4: Build and Run<a class="headerlink" href="#step-4-build-and-run" title="Link to this heading"></a></h3>
@@ -196,6 +255,28 @@
 </pre></div>
 </div>
 <p>This command builds the Docker images and starts the containers. Promtail will start tailing the log files generated by the Python application and send them to Loki.</p>
+</section>
+<section id="step-5-viewing-logs-in-grafana">
+<h3>Step 5: Viewing Logs in Grafana<a class="headerlink" href="#step-5-viewing-logs-in-grafana" title="Link to this heading"></a></h3>
+<p>After starting the Docker Compose setup, you can view the logs in Grafana. Follow these steps:</p>
+<ol class="arabic simple">
+<li><p>Open your web browser and navigate to <cite>http://localhost:3000</cite>.</p></li>
+<li><p>You will be automatically logged in as an anonymous user with admin privileges.</p></li>
+<li><p>In the Grafana dashboard, click on the <strong>Explore</strong> icon on the left sidebar.</p></li>
+<li><p>In the <strong>Explore</strong> view, select <strong>Loki</strong> as the data source from the dropdown at the top.</p></li>
+<li><p>Enter the following query to view the logs:</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{job=&quot;pylogs&quot;, environment=&quot;production&quot;}
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="6">
+<li><p>Press <strong>Run query</strong> to fetch and display the logs from Loki.</p></li>
+</ol>
+<p>You should see the logs generated by your Python application, formatted as JSON, and sent to Loki by Promtail. This allows you to monitor your application logs in real-time and utilize Grafana’s powerful visualization and querying capabilities.</p>
+<img alt="Grafana Explore view" src="../_images/loki.png" />
+<p>With this setup, you have successfully integrated your Python application’s logging with Grafana Loki, enabling efficient log management and analysis.</p>
 </section>
 </section>
 <section id="summary">

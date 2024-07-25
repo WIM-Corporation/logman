@@ -22,7 +22,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="LoggingHandler" href="logging_handler_module.html" />
-    <link rel="prev" title="JsonFormatter" href="json_formatter_module.html" /> 
+    <link rel="prev" title="Formatter" href="formatter_module.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,13 +44,16 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Features</span></p>
-<ul class="current">
+              <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="custom_logger_module.html">CustomLogger</a></li>
-<li class="toctree-l2"><a class="reference internal" href="json_formatter_module.html">JsonFormatter</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">LoggerFactory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="logging_handler_module.html">LoggingHandler</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="custom_logger_module.html">CustomLogger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="formatter_module.html">Formatter</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">LoggerFactory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logging_handler_module.html">LoggingHandler</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../features/index.html">Features</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../recipes/index.html">Recipes</a></li>
@@ -76,9 +79,10 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Documentation</a></li>
+          <li class="breadcrumb-item"><a href="index.html">API</a></li>
       <li class="breadcrumb-item active">LoggerFactory</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/documentation/modules/logger_factory_module.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/documentation/api/logger_factory_module.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -148,6 +152,31 @@
 </dl>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="logman.logger_factory.LoggerFactory._handlers">
+<span class="sig-name descname"><span class="pre">_handlers</span></span><a class="headerlink" href="#logman.logger_factory.LoggerFactory._handlers" title="Link to this definition"></a></dt>
+<dd><p>A list to store added handlers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[logging.Handler]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="logman.logger_factory.LoggerFactory.addHandler">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">addHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Handler</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/logman/logger_factory.html#LoggerFactory.addHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#logman.logger_factory.LoggerFactory.addHandler" title="Link to this definition"></a></dt>
+<dd><p>Add a handler to the root logger.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handler</strong> (<em>logging.Handler</em>) – The handler to add.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="logman.logger_factory.LoggerFactory.getLogger">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">getLogger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Logger</span></span></span><a class="reference internal" href="../../_modules/logman/logger_factory.html#LoggerFactory.getLogger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#logman.logger_factory.LoggerFactory.getLogger" title="Link to this definition"></a></dt>
@@ -166,6 +195,48 @@
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="logman.logger_factory.LoggerFactory.listHandlers">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">listHandlers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Handler</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/logman/logger_factory.html#LoggerFactory.listHandlers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#logman.logger_factory.LoggerFactory.listHandlers" title="Link to this definition"></a></dt>
+<dd><p>List all handlers attached to the root logger.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list of handlers attached to the root logger.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[logging.Handler]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="logman.logger_factory.LoggerFactory.removeHandler">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">removeHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Handler</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/logman/logger_factory.html#LoggerFactory.removeHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#logman.logger_factory.LoggerFactory.removeHandler" title="Link to this definition"></a></dt>
+<dd><p>Remove a handler from the root logger.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handler</strong> (<em>logging.Handler</em>) – The handler to remove.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="logman.logger_factory.LoggerFactory.setFormatter">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">setFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formatter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Formatter</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/logman/logger_factory.html#LoggerFactory.setFormatter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#logman.logger_factory.LoggerFactory.setFormatter" title="Link to this definition"></a></dt>
+<dd><p>Set the formatter for all handlers on the root logger.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>formatter</strong> (<em>logging.Formatter</em>) – The formatter to set.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -174,7 +245,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="json_formatter_module.html" class="btn btn-neutral float-left" title="JsonFormatter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="formatter_module.html" class="btn btn-neutral float-left" title="Formatter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="logging_handler_module.html" class="btn btn-neutral float-right" title="LoggingHandler" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

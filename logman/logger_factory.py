@@ -21,6 +21,7 @@ class LoggerFactory:
         _loggers (Dict[str, logging.Logger]): A dictionary to store created loggers.
         _lock (threading.Lock): A lock to ensure thread safety.
         _initialized (bool): A flag to check if logging has been initialized.
+        _handlers (List[logging.Handler]): A list to store added handlers.
     """
 
     _filePath: Union[str, os.PathLike[str]] = "logs/app.log"
@@ -28,6 +29,7 @@ class LoggerFactory:
     _loggers: Dict[str, logging.Logger] = {}
     _lock = threading.Lock()
     _initialized = False
+    _handlers: List[logging.Handler] = []
 
     @classmethod
     def _initialize_logging(cls) -> None:
@@ -43,6 +45,12 @@ class LoggerFactory:
         if not cls._initialized:
             with cls._lock:
                 if not cls._initialized:
+                    cls._loggers.clear()
+
+                    for handler in cls._handlers:
+                        handler.close()
+                    cls._handlers.clear()
+
                     json_formatter = JsonFormatter()
                     log_level = logging.INFO
                     file_handler = FileRotateLoggingHandler(
@@ -83,8 +91,58 @@ class LoggerFactory:
         if isinstance(handler, list):
             for h in handler:
                 root_logger.addHandler(h)
+                cls._handlers.append(h)
         else:
             root_logger.addHandler(handler)
+            cls._handlers.append(handler)
+
+    @classmethod
+    def addHandler(cls, handler: logging.Handler) -> None:
+        """
+        Add a handler to the root logger.
+
+        Args:
+            handler (logging.Handler): The handler to add.
+
+        Returns:
+            None
+        """
+        cls._initialize_logging()
+        root_logger = logging.getLogger()
+        root_logger.addHandler(handler)
+        cls._handlers.append(handler)
+
+    @classmethod
+    def removeHandler(cls, handler: logging.Handler) -> None:
+        """
+        Remove a handler from the root logger.
+
+        Args:
+            handler (logging.Handler): The handler to remove.
+
+        Returns:
+            None
+        """
+        cls._initialize_logging()
+        root_logger = logging.getLogger()
+        handler.close()
+        root_logger.removeHandler(handler)
+        cls._handlers.remove(handler)
+
+    @classmethod
+    def setFormatter(cls, formatter: logging.Formatter) -> None:
+        """
+        Set the formatter for all handlers on the root logger.
+
+        Args:
+            formatter (logging.Formatter): The formatter to set.
+
+        Returns:
+            None
+        """
+        cls._initialize_logging()
+        for h in cls._handlers:
+            h.setFormatter(formatter)
 
     @classmethod
     def getLogger(cls, name: str) -> logging.Logger:
@@ -105,3 +163,14 @@ class LoggerFactory:
                 if name not in cls._loggers:
                     cls._loggers[name] = logging.getLogger(name)
         return cls._loggers[name]
+
+    @classmethod
+    def listHandlers(cls) -> List[logging.Handler]:
+        """
+        List all handlers attached to the root logger.
+
+        Returns:
+            List[logging.Handler]: A list of handlers attached to the root logger.
+        """
+        cls._initialize_logging()
+        return cls._handlers

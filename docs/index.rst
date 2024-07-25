@@ -6,6 +6,8 @@
 Quickstart
 ==========
 
+**logman** is inspired by the SLF4J LoggerFactory from the Spring ecosystem. It aims to provide a similar experience for Python developers, featuring JSON logging and log rotation capabilities.
+
 1. Install logman:
 
    .. code-block:: bash
@@ -40,7 +42,6 @@ Navigation
 ===========
 
 .. toctree::
-   :caption: Features
    :titlesonly:
 
    documentation/index
@@ -50,5 +51,5 @@ Navigation
    :caption: Support
    :titlesonly:
 
-   Github<https://github.com/WIM-Corporation/logman>
-   Contact us<https://en.wimcorp.co.kr/>
+   Github <https://github.com/WIM-Corporation/logman>
+   Contact us <https://en.wimcorp.co.kr/>

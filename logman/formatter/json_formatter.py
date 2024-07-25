@@ -34,18 +34,6 @@ class JsonFormatter(logging.Formatter):
         s = "%s.%03d" % (t, record.msecs)
         return s
 
-    def formatException(self, ei: Any) -> str:
-        """
-        Format and return the exception information as a string.
-
-        Args:
-            ei (Any): The exception information.
-
-        Returns:
-            str: The formatted exception information.
-        """
-        return super().formatException(ei)
-
     def format(self, record: Any) -> Any:
         """
         Format the log record as a JSON string.
