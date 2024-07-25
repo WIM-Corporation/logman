@@ -18,7 +18,7 @@ $ pip install logman
 from logman import LoggerFactory
 
 class MyClass:
-  def **init**(self):
+  def ___init___(self):
     self.logger = LoggerFactory.getLogger(self.__class__.__name__)
 
   def my_method(self):
