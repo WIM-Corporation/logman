@@ -4,7 +4,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="logman",
-    version="0.0.1",
+    version="0.0.2",
     author="hbjs",
     author_email="hbjs97@naver.com",
     description="logman",
