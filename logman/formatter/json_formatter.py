@@ -12,7 +12,6 @@ class JsonFormatter(logging.Formatter):
 
     Methods:
         formatTime(record, datefmt=None): Formats the log record's timestamp.
-        formatException(ei): Formats and returns the exception information as a string.
         format(record): Formats the log record as a JSON string.
     """
 
