@@ -16,7 +16,7 @@ class LoggerFactory:
     A factory class for creating and managing loggers with file rotation and console output.
 
     Attributes:
-        _filePath (Union[str, os.PathLike[str]]): The default log file path.
+        _filePath (Union[str, os.PathLike]): The default log file path.
         _maxBytes (int): The maximum size of the log file before rotation occurs.
         _loggers (Dict[str, logging.Logger]): A dictionary to store created loggers.
         _lock (threading.Lock): A lock to ensure thread safety.
@@ -24,7 +24,7 @@ class LoggerFactory:
         _handlers (List[logging.Handler]): A list to store added handlers.
     """
 
-    _filePath: Union[str, os.PathLike[str]] = "logs/app.log"
+    _filePath: Union[str, os.PathLike] = "logs/app.log"
     _maxBytes: int = 30 * 1024 * 1024
     _loggers: Dict[str, logging.Logger] = {}
     _lock = threading.Lock()

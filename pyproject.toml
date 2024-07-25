@@ -4,7 +4,7 @@ requires = ["flit_core>=3,<4"]
 
 [project]
 name = "logman"
-version = "0.0.2"
+version = "0.0.3"
 description = "A Python logging library that provides a simple and easy-to-use interface for logging."
 authors = [
   {name = "hbjs", email = "hbjs97@naver.com"}

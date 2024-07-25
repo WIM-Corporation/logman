@@ -9,7 +9,7 @@ class FileRotateLoggingHandler(logging.handlers.RotatingFileHandler):
 
     Args:
         formatter (logging.Formatter): The formatter to use for formatting log messages.
-        filePath (Union[str, os.PathLike[str]]): The path to the log file.
+        filePath (Union[str, os.PathLike]): The path to the log file.
         maxBytes (int): The maximum size of the log file before rotation occurs.
         level (int, optional): The logging level. Defaults to logging.DEBUG.
 
@@ -20,7 +20,7 @@ class FileRotateLoggingHandler(logging.handlers.RotatingFileHandler):
     def __init__(
         self,
         formatter: logging.Formatter,
-        filePath: Union[str, os.PathLike[str]],
+        filePath: Union[str, os.PathLike],
         maxBytes: int,
         level: int = logging.DEBUG,
     ):
@@ -29,7 +29,7 @@ class FileRotateLoggingHandler(logging.handlers.RotatingFileHandler):
 
         Args:
             formatter (logging.Formatter): The formatter to use for formatting log messages.
-            filePath (Union[str, os.PathLike[str]]): The path to the log file.
+            filePath (Union[str, os.PathLike]): The path to the log file.
             maxBytes (int): The maximum size of the log file before rotation occurs.
             level (int, optional): The logging level. Defaults to logging.DEBUG.
         """
