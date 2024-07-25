@@ -10,3 +10,4 @@ build/
 **/__pycache__
 **/.mypy_cache
 logs
+docs/_build

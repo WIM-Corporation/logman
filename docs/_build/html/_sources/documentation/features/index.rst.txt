@@ -1,9 +1,0 @@
-*****************
-Features
-*****************
-
-.. toctree::
-    :titlesonly:
-    :glob:
-
-    *
