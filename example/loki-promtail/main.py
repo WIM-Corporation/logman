@@ -21,7 +21,7 @@ class Bar:
     def logRandomNumber(self) -> None:
         while True:
             self.logger.info(f"Generated random number: {random.randint(1, 10000)}")
-            time.sleep(1)
+            time.sleep(15)
 
 
 class Baz:
@@ -40,16 +40,16 @@ if __name__ == "__main__":
     baz = Baz()
 
     # Create threads for Foo and Bar logging
-    foo_thread = threading.Thread(target=foo.logRandomNumber)
+    # foo_thread = threading.Thread(target=foo.logRandomNumber)
     bar_thread = threading.Thread(target=bar.logRandomNumber)
     baz_thread = threading.Thread(target=baz.logRandomNumber)
 
     # Start the threads
-    foo_thread.start()
+    # foo_thread.start()
     bar_thread.start()
     baz_thread.start()
 
     # Join the threads to the main thread to keep them running
-    foo_thread.join()
+    # foo_thread.join()
     bar_thread.join()
     baz_thread.join()

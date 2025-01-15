@@ -7,6 +7,11 @@ positions:
 
 clients:
   - url: http://loki:3100/loki/api/v1/push
+  # If you want to use basic auth, you can set it as follows.
+  # - url: https://<LOKI_HOST>/loki/api/v1/push
+  #   basic_auth:
+  #     username: <USERNAME>
+  #     password: <PASSWORD>
 
 scrape_configs:
   - job_name: logman
@@ -14,6 +19,6 @@ scrape_configs:
       - targets:
           - localhost
         labels:
-          job: pylogs
+          job: delta
           __path__: /var/logs/*.log
           environment: production

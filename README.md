@@ -45,7 +45,7 @@ python -m unittest discover -s tests -p 'test_*.py'
 ### tox
 
 ```bash
-pip install tox pytest
+pip install -r requirements-test.txt
 tox
 ```
 
@@ -54,7 +54,8 @@ tox
 ### Sphinx
 
 ```bash
-pip install Sphinx sphinx-autobuild sphinx-rtd-theme myst_parser
-cd docs
-make html
+pip install -r requirements-docs.txt
+make -C docs html
+
+# Output path: docs/_build/html
 ```
